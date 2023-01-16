@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="MachineFormStyle2.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+  
+    <script type="text/javascript">
+        var userName = "Ryan Thomas";
+        var userDirectory = userName.replace(/\s/g,"");
+        var callingPage = 'UserLevel.html';
+        var machineDB;
+        
+        
+        $(init);
+        
+        function init() {
+            FindMachineDB();
+            sessionStorage.userName = userName;
+            sessionStorage.userDirectory = userDirectory;
+            sessionStorage.callingPage = callingPage;
+            $("#title").html("Data for " + userName);
+            $("#header").html("Welcome " + userName);
+        }
+        
+        function FindMachineDB() {
+            $.post("findMachineDB2.php",{"userDirectory":userDirectory},displayMachines);
+        }
+        
+        function displayMachines(data,textStatus) {
+            machineDB = data;
+        }
+        
+        function EditMachineDB() {
+            window.location.href = "http://localhost/Shoot_Software/MachineForm.html";          
+        }
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <h1 id="header">Welcome Ryan Thomas</h1>
+    <h2>Shoot Databases</h2>
+    <div id="shootList">
+    </div>
+    
+    <input type="button" id="editMachines" value="Edit Machine Database" onclick="EditMachineDB();"/>
+
+</body>
+
+
+
+</html>

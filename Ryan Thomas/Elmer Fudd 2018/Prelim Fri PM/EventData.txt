@@ -1,0 +1,5 @@
+name: Prelim Fri PM
+date: Friday PM
+numShooters: 40
+overcapacity: 25%
+notes: Not part of main event.

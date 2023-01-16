@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        Shoot Form
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="ShootFormStyle.css"/>
+    <link rel="stylesheet"
+          type="text/css"
+          href="jquery-ui-1.12.1.custom\jquery-ui.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="jquery-ui.min.js"></script>
+    <script type="text/javascript"
+            src="ClientFunctions.js"></script>
+  
+    <script type="text/javascript">
+        $(init);    //Run initialization function
+        var idx;
+        var dirs;
+        var callingPage;
+        var shoot;
+        
+        function parseData(data,r,d,opt=0) {
+            var s1 = data.match(r);
+            if (s1!==null) {
+                s1 = s1[0];
+                var s1a = s1.substring(0,s1.length-d.length);
+                data = data.substring(s1.length);
+                if (opt===0) {
+                    shoot = JSON.parse(s1a);
+                } else if (opt===2) {
+                    data = s1a;
+                }
+            } else {
+                if (opt!==0) {
+                    return false;
+                }
+            }
+            return data;           
+        }
+        
+        function init() {
+            if (sessionStorage.dirs) {
+                dirs = JSON.parse(sessionStorage.dirs);
+            } else {
+                dirs = new DirList();
+                dirs.userDir = "Ryan Thomas";
+                dirs.shootDir = "Bugaboo Blast";
+                dirs.eventDir = "";
+                sessionStorage.dirs = JSON.stringify(dirs);
+            }
+            //if (sessionStorage.callingPage) {
+            //    callingPage = sessionStorage.callingPage;
+            //} else {
+            //    callingPage = "ShootForm.html";
+            //}
+            
+            //$(function () {
+            //    $("#startDate").datepicker();
+            //});
+            $.datepicker.setDefaults({
+                dateFormat: "yy-mm-dd"
+            })
+            $("#startDate").datepicker();
+            $("#endDate").datepicker();
+            
+            
+            
+            callingPage = "UserForm.html";
+            
+            $("#header").html("Shoot details for " + dirs.shootDir);
+
+            sessionStorage.callingPage = callingPage;
+            
+            idx=-1;
+            $.post("getShootData.php",dirs,dispShootData);
+            
+        }
+        
+        function dispShootData(data,textStatus) {
+            data = parseData(data,divideRegEx,DIVIDER,0);
+            var tableData = parseData(data,/^[\s\S]*---EVENT SUMMARY BELOW---/,"---EVENT SUMMARY BELOW---",2);
+            if (tableData !== false) {
+                data = parseData(data,/^[\s\S]*---EVENT SUMMARY BELOW---/,"---EVENT SUMMARY BELOW---",1);
+                var msg = "<h3>Shoot Summary</h3>\n";
+                msg += "<h4>Number of targets required</h4>\n";            
+            
+                $("#ShootSummary").html(msg + tableData);
+            }
+            
+            
+            
+            
+            $("#shootName").val(shoot.name);
+            $("#startDate").val(shoot.startDate);
+            $("#endDate").val(shoot.endDate);
+            $("#notes").val(shoot.notes);
+            $("#header").html("Shoot details for " + dirs.shootDir);
+            if (idx == -1) {
+                $("#eventList").html(data);
+            } else {
+                $("#eventList").html($("#eventList").html() + data);
+            }
+        }
+        
+        function BackButton() {
+            window.location.href = "UserForm.html";
+        }
+        
+        function editMachines() {
+            sessionStorage.callingPage = "ShootForm.html";
+            window.location.href = "MachineForm.html";
+        }
+        
+        function editEvent(id) {
+            dirs.eventDir = shoot.events[id];
+            sessionStorage.dirs = JSON.stringify(dirs);
+            window.location.href = "EventForm.html";
+        }
+        
+        function newEvent(id=null) {
+            idx = shoot.events.length;
+            var name;
+            var obj;
+            if (id!==null) {
+                name = shoot.events[id];
+                obj = {"idx":idx,"name":name,"copyIdx":id};
+            } else {         
+                obj = {"idx":idx};
+            }
+            $.extend(obj,dirs);
+            $.post("eventForm.php",obj,dispShootData);
+        }
+        
+        
+        function cancelEvent(id) {
+            $("#event_" + id).remove();
+        }
+        
+        function makeEvent(id,copyId) {
+            var name = document.getElementById("eventName_" + id).value;
+            if (checkNames(name,id,shoot.events)===false) {
+                document.getElementById("eventName_" + id).style.backgroundColor = "red";
+                document.getElementById("name_chk_" + id).style.display = "inline";
+                return -1;
+            }
+            idx=id;
+            var obj;
+            if (copyId>=0) {
+                obj = {"name":name,"copyName":shoot.events[copyId]};
+            } else {
+                obj = {"name":name};
+            }
+            $.extend(obj,dirs);
+            $.post("makeEvent.php",obj,
+                   function(data,textStatus) {
+                    if (data!=="Data saved!") {
+                        $("#name_chk_" + idx).html("Error creating new event");
+                        $("#name_chk_" + idx).css("display","inline");
+                        return -1;
+                    }
+                    idx = -1;
+                    $.post("getShootData.php",dirs,dispShootData);
+                    }
+                    );
+            
+        }
+        
+        function deleteEvent(id) {
+            var name = shoot.events[id];
+            if (confirm("Are you sure you want to delete " + name + "?")){  //Dialog box for confirming delete
+                idx=-1; //Recreate entire list
+                dirs.eventDir = name;
+                //var obj = {"name":name};
+                //$.extend(obj,dirs);
+                $.post("deleteEvent.php",dirs,function(data,textStatus){$.post("getShootData.php",dirs,dispShootData);});
+            }
+        }
+        
+        function saveShootData() {
+            var name = $("#shootName").val();
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+            var notes = $("#notes").val();
+            
+            var obj = {"name":name,"start":startDate,"end":endDate,"notes":notes};
+            $.extend(obj,dirs);
+            $.post("saveShootData.php",obj,dispSaveEvent);
+        }
+        
+        function dispSaveEvent(data,textStatus) {
+            data = parseData(data,divideRegEx,DIVIDER,0);
+            dirs.shootDir = shoot.name;
+            sessionStorage.dirs = JSON.stringify(dirs);
+            $.post("getShootData.php",dirs,dispShootData);
+            $("#saveStatus").html(data);
+            setTimeout(function() {$("#saveStatus").html("");},500);
+        }
+
+        function genMachineChecklist() {
+            sessionStorage.dirs = JSON.stringify(dirs);
+            sessionStorage.callingPage = "ShootForm.html";
+            window.location.href = "MachineChecklist.html";
+        }
+        
+        function genStnChecklist() {
+            dirs.eventDir = "";
+            sessionStorage.dirs = JSON.stringify(dirs);
+            sessionStorage.callingPage = "ShootForm.html";
+            window.location.href = "StationChecklist.html";
+        }
+        
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <h1 id="header">Shoot Properties</h1>
+    <div id="main">
+        <input type="button" id="Back" class="button" value="Back" onclick="BackButton();"/>
+        <div class="ShootSummary">
+            <form id="ShootProperties" class="ShootProperties">
+                <fieldset>
+                    <label>Shoot Name</label>
+                    <input type="text" id="shootName"/>
+                    <!--<label>Start Date</label>-->
+                    <!--<input type="date" id="startDate"/>-->
+                    <!--<label>End Date</label>-->
+                    <!--<input type="date" id="endDate"/>-->
+                    <label>Start Date</label>
+                    <input type="text" id="startDate"/>
+                    <label>End Date</label>
+                    <input type="text" id="endDate"/>
+                    <label>Notes</label>
+                    <textarea id="notes" rows="4" cols="50"></textarea>
+                    <div id="divSave">
+                        <input type="button" id="saveShoot" value="Save Shoot Data" onclick="saveShootData();"/>
+                        <div id="saveStatus"></div>
+                    </div>               
+                </fieldset>
+            </form>
+            <div id="ShootSummary" class="ShootProperties">
+            </div>
+        </div>
+        <div id="Buttons">
+            <input type="button" id="newEvent" value="New Event" onclick="newEvent();"/>
+            <input type="button" id="editMachines" value="Edit Machine Database" onclick="editMachines();"/>
+            <input type="button" id="genStationChecklist" value="Generate Station Checklist" onclick="genStnChecklist();"/>
+            <input type="button" id="genMachineChecklist" value="Generate Machine Checklist" onclick="genMachineChecklist();"/>
+        </div>
+    </div>
+    <div id="eventList">
+       
+    </div>
+    
+    
+    
+</body>
+
+
+
+</html>

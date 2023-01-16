@@ -1,0 +1,143 @@
+name: 4 {
+	inUse: yes
+	machines: DR-1
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: Shot behind fence near 25 m berm
+}
+name: 8 {
+	inUse: yes
+	machines: LN-3
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: Low flyer over fence
+}
+name: 13 {
+	inUse: yes
+	machines: R6-m
+	colours: orange top
+	trappers: None
+	numShots: 5
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: Shot from tower.
+}
+name: 19 {
+	inUse: yes
+	machines: GR-1
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: 
+}
+name: 23 {
+	inUse: yes
+	machines: LN-1
+	colours: orange top
+	trappers: Wanted
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 31 {
+	inUse: yes
+	machines: SR, CR-3
+	colours: orange top, orange top
+	trappers: None, None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 39 {
+	inUse: yes
+	machines: GR-2
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: 
+}
+name: 41 {
+	inUse: yes
+	machines: GR-3
+	colours: orange top
+	trappers: None
+	numShots: 5
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: 
+}
+name: 42 {
+	inUse: yes
+	machines: GR-4
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: 
+}
+name: 49 {
+	inUse: no
+	machines: R6-M
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: Comes down the hill
+}
+name: 53 {
+	inUse: yes
+	machines: LN-4M, LN-4m
+	colours: orange top, orange top
+	trappers: None, None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 56 {
+	inUse: yes
+	machines: DR-2
+	colours: orange top
+	trappers: None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 58 {
+	inUse: yes
+	machines: CR-1, CR-2
+	colours: orange top, orange top
+	trappers: None, None
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}

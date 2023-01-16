@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        Scorecard
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="ScorecardStyle.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="ClientFunctions.js"></script>
+  
+    <script type="text/javascript">
+        $(init);
+        var numRows;
+        
+        function init() {
+            dirs = JSON.parse(sessionStorage.dirs);
+            numRows = 6;
+            $("#numRows").val(numRows);
+            var obj = {"numRows":numRows};
+            $.extend(obj,dirs);
+            $.post("genScoreCard.php",obj,displayData);
+            
+        }
+        
+        function displayData(data,textStatus) {
+            $("#Scorecard").html(data);
+        }
+        
+        function BackButton() {
+            if (sessionStorage.callingPage) {
+                window.location.href = sessionStorage.callingPage;
+            }
+        }
+        
+        function Refresh() {
+            numRows = $("#numRows").val();
+            var obj = {"numRows":numRows};
+            $.extend(obj,dirs);
+            $.post("genScoreCard.php",obj,displayData);
+        }
+        
+        
+    </script>
+</head>
+
+<body>
+    <input type="button" id="Back" class="button noprint" value="Back" onclick="BackButton();"/>
+    <div class="noprint">
+        <label>Number of shooters per card</label>
+        <input type="text" id="numRows" val=""/>
+        <input type="button" id="Refresh"  value="Refresh" onclick="Refresh();"/>
+    </div>
+    <div id="Scorecard">        
+    </div>
+    
+
+</body>
+</html>

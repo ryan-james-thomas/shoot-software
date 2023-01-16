@@ -1,0 +1,196 @@
+name: TL {
+	type: regular
+	numThrown: 2
+	size: 450
+	owner: LWD R&G
+	notes: 
+}
+name: PAT {
+	type: regular
+	numThrown: 2
+	size: 500
+	owner: LWD R&G
+	notes: Pat trap
+}
+name: SR {
+	type: rabbit
+	numThrown: 1
+	size: 250
+	owner: LWD R&G
+	notes: 
+}
+name: R6-m {
+	type: mini
+	numThrown: 1
+	size: 400
+	owner: LWD R&G
+	notes: 
+}
+name: R6-M {
+	type: midi
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: AS-1 {
+	type: regular
+	numThrown: 1
+	size: 250
+	owner: LWD R&G
+	notes: 
+}
+name: AS-2 {
+	type: regular
+	numThrown: 1
+	size: 250
+	owner: LWD R&G
+	notes: 
+}
+name: CR-1 {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: CR-2 {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: DR-1 {
+	type: rabbit
+	numThrown: 2
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: LN-1 {
+	type: regular
+	numThrown: 2
+	size: 0
+	owner: LWD R&G
+	notes: Manual machine
+}
+name: LN-2 {
+	type: regular
+	numThrown: 2
+	size: 0
+	owner: LWD R&G
+	notes: Manual machine
+}
+name: MAT-2 {
+	type: regular
+	numThrown: 1
+	size: 150
+	owner: LWD R&G
+	notes: Can only load carousel halfway
+}
+name: MX-1 {
+	type: regular
+	numThrown: 1
+	size: 400
+	owner: LWD R&G
+	notes: 
+}
+name: MX-2 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-4 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-5 {
+	type: regular
+	numThrown: 1
+	size: 400
+	owner: LWD R&G
+	notes: 
+}
+name: MX-6 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: R6-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: Left-hand machine
+}
+name: R6-2 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: R6-3 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: R6-4 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: GOL-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Golden R&G
+	notes: 
+}
+name: TAF-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-2 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-3 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-4 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-10 {
+	type: battue
+	numThrown: 1
+	size: 450
+	owner: Tom Ferguson
+	notes: 
+}

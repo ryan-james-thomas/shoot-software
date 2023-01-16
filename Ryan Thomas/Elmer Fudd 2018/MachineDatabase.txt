@@ -1,0 +1,136 @@
+name: CR-1 {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: 
+}
+name: CR-2 {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: 
+}
+name: CR-3 {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: 
+}
+name: DR-1 {
+	type: rabbit
+	numThrown: 2
+	size: 400
+	owner: LWD R&G
+	isManual: no
+	notes: Needs to be level when set out.
+}
+name: DR-2 {
+	type: rabbit
+	numThrown: 2
+	size: 400
+	owner: LWD R&G
+	isManual: no
+	notes: Needs to be level when set out.
+}
+name: GR-1 {
+	type: rabbit
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: From tower with small window near station 19
+}
+name: GR-2 {
+	type: rabbit
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: On upper road, near station 39
+}
+name: GR-3 {
+	type: rabbit
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: Near upper road corner.
+}
+name: GR-4 {
+	type: rabbit
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: On bench near station 42
+}
+name: LN-1 {
+	type: rabbit
+	numThrown: 2
+	size: 0
+	owner: LWD R&G
+	isManual: yes
+	notes: Manual machine with rabbit head.
+}
+name: LN-2 {
+	type: rabbit
+	numThrown: 2
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: Manual machine with rabbit head.
+}
+name: LN-3 {
+	type: regular
+	numThrown: 2
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: Manual with regular head
+}
+name: LN-4M {
+	type: midi
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: LN-4m and M are the mini and midi part of LN-4
+}
+name: LN-4m {
+	type: mini
+	numThrown: 1
+	size: 0
+	owner: LWD R&G
+	isManual: no
+	notes: LN-4m and M are the mini and midi part of LN-4
+}
+name: R6-M {
+	type: midi
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: 
+}
+name: R6-m {
+	type: mini
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: 
+}
+name: SR {
+	type: rabbit
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	isManual: no
+	notes: Wheel rabbit
+}

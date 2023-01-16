@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Boxes
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="Style.css"/>
+    
+    <script>
+        
+        var machineCount = 0;
+        var machines = new Machine("none","Regular",0,"");
+        
+        function Machine(inName,inType,inSize,inOwner,inNotes) {
+            this.name = inName;
+            this.type = inType;
+            this.size = inSize;
+            this.owner = inOwner;
+            this.notes = inNotes;
+            
+            this.display = function(){
+                var msg = "Name: " + this.name + "\n";
+                msg += "Type: " + this.type + "\n";
+                msg += "Size: " + this.size + "\n";
+                msg += "Notes: " + this.notes;
+                alert(msg);
+            };
+            
+            this.displayHTML = function(){              
+                var msg = "Name: " + this.name + "<br/>";
+                msg += "Type: " + this.type + "<br/>";
+                msg += "Size: " + this.size + "<br/>";
+                msg += "Owner: " + this.owner + "<br/>";
+                msg += "Notes: " + this.notes + "<br/><br/n>";
+                return msg;
+            };
+        }
+        
+        function CreateMachine(){
+            var eName=document.getElementById("txtName");
+            var eType=document.getElementsByName("type");
+            var eSize=document.getElementById("txtSize");
+            var eOwner=document.getElementsByName("Owner");
+            var eNotes=document.getElementById("txtNotes");
+            
+            var currentType=eType[1].value;
+            for (i=0;i<eType.length;i++){
+                if (eType[i].checked){
+                    currentType=eType[i].value;
+                }
+            }
+            var currentOwner=eOwner[1].value;
+            for (i=0;i<eOwner.length;i++){
+                if (eOwner[i].checked) {
+                    currentOwner=eOwner[i].value;
+                }
+            }
+            
+            
+            var numSize=parseInt(eSize.value);
+            var txtName=eName.value;
+            
+            if (txtName.length==0){
+                alert("Machine needs a name");
+                return;
+            } else {
+                var newMachine = new Machine(eName.value,currentType,numSize,currentOwner,eNotes.value);
+                machines[machineCount]=newMachine;
+                machineCount++;
+            }           
+        }
+        
+        function DisplayMachines() {
+            var output=document.getElementById("machineList");
+            
+            var msg1 = "<p class=\"clr";
+            var msg = "";
+            output.innerHTML="";
+            for (i=0;i<machineCount;i++) {
+                msg = msg1 + ((i%2) + 1) + "\">";
+                msg += machines[i].displayHTML() + "</p>";
+                output.innerHTML += msg;                
+            }
+        }
+        
+        function download(text, name, type) {
+            var a = document.createElement("a");
+            var file = new Blob([text], {type: type});
+            a.href = URL.createObjectURL(file);
+            a.download = name;
+            a.click();
+        }
+        jsonData = {
+            a: 1,
+            b: 2,
+            c: 3,
+        };
+        
+        
+    </script>
+    
+</head>
+
+
+<body onload="download(JSON.stringify(jsonData), 'test.txt', 'text/plain');">
+    <h1>Create machine</h1>
+    <form action="">
+        <fieldset>
+            <label>Machine name</label>
+            <input type="text"
+                   id="txtName"/>
+            <br/>
+            <label>Type</label>         
+            <input type="radio"
+                   name="type"
+                   id="radReg"
+                   value="Regular"
+                   checked="checked"/>
+            <label for="radReg">Regular</label>
+            <input type="radio"
+                   name="type"
+                   id="radRabbit"
+                   value="Rabbit"/>
+            <label for="radRabbit">Rabbit</label>
+            <input type="radio"
+                   name="type"
+                   id="radDoubleRabbit"
+                   value="Double Rabbit"/>
+            <label for="radDoubleRabbit">Double Rabbit</label>
+            <input type="radio"
+                   name="type"
+                   id="radMini"
+                   value="Mini"/>
+            <label for="radMini">Mini</label>
+            <input type="radio"
+                   name="type"
+                   id="radMidi"
+                   value="Midi"/>
+            <label for="radMidi">Midi</label>
+            <input type="radio"
+                   name="type"
+                   id="radBattue"
+                   value="Battue"/>
+            <label for="radBattue">Battue</label>
+            <input type="radio"
+                   name="type"
+                   id="radTeal"
+                   value="Teal"/>
+            <label for="radTeal">Teal</label>
+            <br/>
+            <label>Size</label>
+            <input type="text"
+                   id="txtSize"/>
+            <br/>
+            <label>Owner</label>
+            <input type="radio"
+                   name="Owner"
+                   id="radLWD"
+                   checked="checked"
+                   value="LWD R&G"/>
+            <label for="radLWD">LWD R&G</label>
+            <input type="radio"
+                   name="Owner"
+                   id="radGolden"
+                   value="Golden R&G"/>
+            <label for="radGolden">Golden R&G</label>
+            <input type="radio"
+                   name="Owner"
+                   id="radTAF"
+                   value="TAF"/>
+            <label for="radTAF">Tom Ferguson</label>
+            <br/>
+            <label>Notes</label>
+            <br/>
+            <textarea id="txtNotes">
+            </textarea>
+            
+<!--            <input type="button"
+                   class="button"
+                   id="createMachine"
+                   value="Create Machine"
+                   onclick="CreateMachine();"/>-->
+            <button type="button"
+                    class="button"
+                    id="createMachine"
+                    onclick="CreateMachine();this.form.reset();DisplayMachines();">
+                Create Machine
+            </button>
+            <input type="button"
+                   class="button"
+                   id="displayMachines"
+                   value="Display Machines"
+                   onclick="DisplayMachines();"/>
+            
+        </fieldset>
+    </form>
+    
+    <div id="machineList">
+        Watch this space.
+    </div>
+    
+</body>
+
+
+
+</html>

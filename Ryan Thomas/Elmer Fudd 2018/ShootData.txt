@@ -1,0 +1,4 @@
+name: Elmer Fudd 2018
+startDate: 2018-05-25
+endDate: 2018-05-27
+notes: Non-registered.  Rabbits and low-flyers.

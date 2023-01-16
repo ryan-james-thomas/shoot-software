@@ -1,0 +1,5 @@
+name: Test Event
+date: Sat AM
+numShooters: 60
+overcapacity: 10%
+notes: 

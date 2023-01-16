@@ -1,0 +1,5 @@
+name: Prelim Friday PM
+date: Friday PM
+numShooters: 50
+overcapacity: 25%
+notes: 

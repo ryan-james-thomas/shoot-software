@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        Event Database
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="MachineFormStyle2.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+  
+    <script type="text/javascript">
+        
+        var idx;    //Used to keep track of what station is being dealt with
+        var machineIdx; //Used to keep track of what machine is being dealt with
+        var userDirectory;
+        var filenameMachines = "MachineDatabase.txt";
+        var filename = "StationList.txt";
+        
+        
+        
+        function DisplayMachineProperties(id) {
+            machineIdx = id;
+            //$.post("getMachineHTML.php",{"id":id,"filename":filename,"directory":userDirectory,"filenameMachines":filenameMachines},displayMachineData);
+            $("#test").html("Hello " + id);
+        }
+        
+        function disp() {
+            var id = $("#sel").val();
+            $("#test").html("Hello " + id);
+        }
+        
+        //function showSelectValue(e) { 
+        //    if (e.target.id!= 'sel') { 
+        //    document.getElementById('test').innerHTML = "Hello " + e.target.value; 
+        //    } 
+        //}
+        //
+        //$(attachTest);
+        //function attachTest() { 
+        //document.getElementById('sel').addEventListener('mouseover',showSelectValue,false); 
+        //}
+        
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <div>
+        <select id="sel" onmouseover="disp(this);">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    
+    <div id="test"></div>
+    
+    
+</body>
+
+
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Machine Database
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="MachineFormStyle2.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="ClientFunctions.js"></script>
+  
+    <script type="text/javascript">
+        $(init);    //Run initialization function
+        var idx;    //Used to keep track of what machine is being dealt with
+        var dirs;
+        var machines;
+        
+        function init() {        
+            if (sessionStorage.dirs) {
+                dirs = JSON.parse(sessionStorage.dirs);
+            } else {
+                dirs = new DirList();
+                dirs.userDir = "Ryan Thomas";
+                dirs.shootDir = "Bugaboo Blast";
+                dirs.eventDir = "Test Event";
+                sessionStorage.dirs = JSON.stringify(dirs);
+            }           
+            $("#header").html("Machine database for " + dirs.shootDir);
+            
+            idx=-2;
+            var obj = {"idx":idx};
+            $.extend(obj,dirs);
+            $.post("displayMachines.php",obj,displayData);
+        }   //End init
+        
+        //Displays data returned from server
+        function displayData(data,textStatus) {                    
+            data = parseData(data);
+                        
+            if (idx==-1) {  //Appends data
+                $("#machineList").html($("#machineList").html() + data);
+                var str = data.match(/id="Machine_\d+"/);
+                str = str[0].substring(4);
+                str = str.replace(/"/,"");
+                document.getElementById(str).scrollIntoView(true);
+            } else if (idx==-2) {   //Replaces data
+                $("#machineList").html(data);
+            } else {    //Replaces only specified index
+                $("#Machine_" + idx).html(data);
+            }
+            
+            updateHeader();
+        }   //End displayData
+        
+        //Strips JSON object from data is present
+        function parseData(data) {
+            var s1 = data.match(divideRegEx);
+            if (s1!==null) {
+                s1 = s1[0];
+                var s1a = s1.substring(0,s1.length-DIVIDER.length);
+                data = data.substring(s1.length);
+                var tmp = JSON.parse(s1a);
+                if (Array.isArray(tmp)===false) {   //If tmp is not an array, replace only the specified element
+                    machines[tmp.idx] = tmp;
+                } else {    //Otherwise replace all elements
+                    machines = tmp;
+                }
+            }            
+            return data;
+        }   //End parseData
+        
+        //Updates floating header with number of stations and number of targets per shooter
+        function updateHeader() {
+            var machineNames = [];
+            for (i=0;i<machines.length;i++) {
+                machineNames[i] = machines[i].name;                  
+            }
+            
+            //var msg = "Machines: " + machineNames.join(", ") + "<br/>";
+            var msg = "Number of machines: " + machines.length;
+            $("#headerMachineInfo").html(msg);
+        }   //End updateHeader
+        
+        //Uses MachineForm.php to create a form for editing or creating a new machine
+        function MachineForm(id) {           
+            idx=id;
+            var obj = {"idx":idx};
+            $.extend(obj,dirs);
+            $.post("MachineForm.php",obj,displayData);                      
+        }   //End MachineForm
+        
+        //Removes form
+        function CancelMachineForm(id,newMachine) {
+            if (newMachine == 1) {    //If a "new machine" form is being cancelled, delete container
+                $("#Machine_"+id).remove();
+            } else {    //Otherwise return to old display
+                idx = id;
+                var obj = {"idx":idx};
+                $.extend(obj,dirs);
+                $.post("displayMachines.php",obj,displayData);
+            }
+        }   //End CancelMachineForm
+            
+        //Sends new machine data to server using JSON object   
+        function SaveMachineForm(id) {
+            
+            idx_label = "idx"+id;
+            name = document.getElementById("name_"+idx_label).value;
+            type = getRadioValue("type_" + idx_label);
+            numThrown = getRadioValue("numThrown_" + idx_label);
+            size = document.getElementById("size_" + idx_label).value;
+            owner = getRadioValue("owner_" + idx_label);
+            var isManual = document.getElementById("isManual_" + idx_label).checked;
+            isManual = isManual?"yes":"no";
+            notes = document.getElementById("notes_" + idx_label).value;
+            idx=id;
+            var obj = {"idx":idx,"name": name,"type": type,"numThrown":numThrown,"size":size,"owner":owner,"isManual":isManual,"notes":notes};
+            $.extend(obj,dirs);
+            $.post("saveMachine.php",obj,checkNewValues);  
+        }   //End SaveMachineForm
+        
+        //Check for errors thrown by the server
+        function checkNewValues(data,textStatus) {
+            var err = JSON.parse(data);
+            if (err === false) {
+                var obj = {"idx":idx};
+                $.extend(obj,dirs);
+                $.post("displayMachines.php",obj,displayData);  
+            } else {
+                document.getElementById("name_idx" + idx).style.backgroundColor = "red";
+                document.getElementById("name_chk_idx" + idx).style.display = "inline";
+            }
+        }   //End checkNewValues
+        
+        //Deletes a machine from the database or the entire database
+        function DeleteMachine(id) {
+            if (id == -1) {
+                if (!confirm("Are you sure you want to delete all machines for " + dirs.shootDir + "? This will remove all machine links to stations as well!")) {
+                    return -1;
+                }
+            } else {
+                //Deletes machine from database
+                if (!confirm("Are you sure you want to delete " + machines[id].name + "?")){  //Dialog box for confirming delete
+                    return -1;
+                }
+            }
+            idx=-2; //Recreate entire list using displayData
+            var obj = {"idx":id};
+            $.extend(obj,dirs);
+            $.post("deleteMachine.php",obj,displayData);      
+        }   //End DeleteMachine
+        
+        //Sort machines by name and owner
+        function SortMachines() {
+            //Sorts machines by name and owner
+            idx=-2;
+            $.post("sortMachines.php",dirs,displayData);
+        }   //End SortMachines
+        
+        //Return to calling page
+        function BackButton() {
+            if (sessionStorage.callingPage) {
+                window.location.href = sessionStorage.callingPage;
+            }
+        }   //End BackButton
+        
+        //Appends another machine database to the current one
+        function AppendDatabase(opt) {
+            var obj;            
+            if (opt === 0) {
+                obj = {"opt":opt};
+                $.extend(obj,dirs);
+                $.post("appendMachines.php",obj,
+                       function(data,textStatus) {
+                            $("#options").html(data);    
+                        }
+                );
+            } else {
+                var chk = [];
+                for (i=0;i<opt;i++) {
+                    chk[i] = document.getElementById("check_" + i).checked;
+                }
+                obj = {"opt":opt,"chk":JSON.stringify(chk)};
+                $.extend(obj,dirs);                
+                $.post("appendMachines.php",obj,
+                       function(data,textStatus) {
+                            $("#options").html(data);
+                            idx = -2;
+                            var obj2 = {"idx":idx};
+                            $.extend(obj2,dirs);
+                            $.post("displayMachines.php",obj2,displayData);
+                        }
+                );
+            }
+        }   //End AppendDatabase
+        
+        //Cancels the append database form
+        function CancelAppendDatabase() {
+            $("#options").html("");
+            //idx = -2;
+            //var obj = {"idx":idx};
+            //$.extend(obj,dirs);
+            //$.post("displayMachines.php",obj,displayData);
+        }   //End CancelAppendDatabase
+        
+        
+        function GoToMachine() {
+            var name = $("#gotoMachine").val();
+            var id = getMachineIndicies(name,machines);
+            if (id === -1) {
+                $("#gotoError").html("Machine not found!");
+                setTimeout(function() {$("#gotoError").html("");},2000);
+            } else {
+                $("#gotoError").html("");
+                document.getElementById("Machine_" + id).scrollIntoView(true);
+            }
+        }
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <div id="floatHeader">
+        <h3 id="headerMachineInfo"></h3>
+        <div class="Buttons">
+            <input type="button" value="Back" onclick="BackButton();"/>
+            <input type="button" value="New" onclick="MachineForm(-1);"/>
+            <input type="button" value="Sort" onclick="SortMachines();"/>
+            <input type="button" value="Add database" onclick="AppendDatabase(0);"/>
+            <label for="gotoMachine">Go to machine</label>
+            <input type="text" id="gotoMachine" style="width: 4em" val="" />
+            <input type="button" value="Go!" onclick="GoToMachine();"/>
+            <span id="gotoError"></span>
+        </div>
+        <div id="options">
+        </div>
+    </div>
+    <div id="content">
+        <h1 id="header">Machine database</h1>
+        <div class="Buttons">
+            <!--<input type="button" value="New" onclick="MachineForm(-1);"/>-->
+            <!--<input type="button" value="Sort" onclick="SortMachines();"/>-->
+            <!--<input type="button" value="Back" onclick="BackButton();"/>-->
+            <!--<input type="button" value="Add database" onclick="AppendDatabase(0);"/>-->
+            <input type="button" value="Clear database" onclick="DeleteMachine(-1);"/>
+        </div>
+        <div id="machineList">      
+        </div>
+        <!--<div class="Buttons">-->
+        <!--    <input type="button" id="New" value="New" onclick="MachineForm(-1);"/>-->
+        <!--    <input type="button" id="Sort" value="Sort" onclick="SortMachines();"/>-->
+        <!--    <input type="button" id="Back2" value="Back" onclick="BackButton();"/>-->
+        <!--</div>-->
+    </div>
+    
+    
+</body>
+
+
+
+</html>

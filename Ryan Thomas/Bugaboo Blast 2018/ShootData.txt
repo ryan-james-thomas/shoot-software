@@ -1,0 +1,4 @@
+name: Bugaboo Blast 2018
+startDate: 2018-08-30
+endDate: 2018-09-02
+notes: 

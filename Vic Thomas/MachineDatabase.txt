@@ -1,0 +1,77 @@
+name: DR-1 {
+	type: rabbit
+	numThrown: 2
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-2 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-4 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: MX-5 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: 
+}
+name: R6-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: LWD R&G
+	notes: Left-hand machine
+}
+name: SR {
+	type: rabbit
+	numThrown: 1
+	size: 250
+	owner: LWD R&G
+	notes: 
+}
+name: GOL-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Golden R&G
+	notes: 
+}
+name: TAF-1 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-10 {
+	type: battue
+	numThrown: 1
+	size: 450
+	owner: Tom Ferguson
+	notes: 
+}
+name: TAF-3 {
+	type: regular
+	numThrown: 1
+	size: 300
+	owner: Tom Ferguson
+	notes: 
+}

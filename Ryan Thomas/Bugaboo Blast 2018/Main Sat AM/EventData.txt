@@ -1,0 +1,5 @@
+name: Main Sat AM
+date: Saturday AM
+numShooters: 70
+overcapacity: 25%
+notes: 

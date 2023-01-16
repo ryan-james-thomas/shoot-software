@@ -1,0 +1,5 @@
+name: Sunday AM
+date: Sunday AM
+numShooters: 60
+overcapacity: 25%
+notes: 

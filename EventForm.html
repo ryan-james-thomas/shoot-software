@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        Event Form
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="EventFormStyle.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="ClientFunctions.js"></script>
+  
+    <script type="text/javascript">
+        $(init);    //Run initialization function
+        var dirs;
+        var callingPage;
+        var eventName;
+        var shootEvent;
+        
+        function parseData(data,r,d,opt=0) {
+            var s1 = data.match(r);
+            if (s1!==null) {
+                s1 = s1[0];
+                var s1a = s1.substring(0,s1.length-d.length);
+                data = data.substring(s1.length);
+                if (opt===0) {
+                    shootEvent = JSON.parse(s1a);
+                } else if (opt===2) {
+                    data = s1a;
+                }
+            }           
+            return data;           
+        }
+        
+        function init() {
+            if (sessionStorage.dirs) {
+                dirs = JSON.parse(sessionStorage.dirs);
+            } else {
+                dirs = new DirList();
+                dirs.userDir = "Ryan Thomas";
+                dirs.shootDir = "Elmer Fudd 2018";
+                dirs.eventDir = "Main Sat AM";
+                sessionStorage.dirs = JSON.stringify(dirs);
+                eventName = dirs.eventDir;
+            }
+            
+            sessionStorage.callingPage = "EventForm.html";
+            
+            $("#header").html("Event details for " + eventName);
+            
+            $.post("getEventData.php",dirs,dispEventData);
+            
+        }
+        
+        function dispEventData(data,textStatus) {
+            
+            data = parseData(data,divideRegEx,DIVIDER,0);
+            var tableData = parseData(data,/^[\s\S]*---STATION SUMMARY BELOW---/,"---STATION SUMMARY BELOW---",2);
+            data = parseData(data,/^[\s\S]*---STATION SUMMARY BELOW---/,"---STATION SUMMARY BELOW---",1);
+            
+            $("#eventName").val(shootEvent.name);
+            eventName = shootEvent.name;
+            
+            //$("#eventDate").val(event.date);
+            var dateArr = shootEvent.date.split(" ");
+            $("#dateSelect").val(dateArr[0]);
+            $("#dateSelect2").val(dateArr[1]);
+            $("#numShooters").val(shootEvent.numShooters);
+            $("#overcapacity").val(shootEvent.overcapacity);
+            $("#notes").val(shootEvent.notes);
+            
+            var msg = "<h3>Event Summary</h3>\n";
+            msg += "Number of stations: " + shootEvent.numStations + "<br/>\n";
+            msg += "Number of targets per shooter: " + shootEvent.numTargets + "<br/>\n";
+            msg += "Number of optional trappers: " + shootEvent.numTrappersWanted + "<br/>\n";
+            msg += "Number of necessary trappers: " + shootEvent.numTrappersNeeded + "<br/>\n";
+            msg += "<h4>Number of targets required</h4>\n";            
+            
+            
+            $("#EventSummary").html(msg + tableData);
+            $("#header").html("Event details for " + eventName);
+            $("#stationList").html(data);
+        }
+        
+        function BackButton() {
+            window.location.href = "ShootForm.html";
+        }
+        
+        function editStations() {
+            window.location.href = "StationForm.html";
+        }
+        
+        function editMachines() {
+            window.location.href = "MachineForm.html";
+        }
+        
+        function genStnChecklist() {
+            window.location.href = "StationChecklist.html";
+        }
+        
+        
+        function SaveEventData() {
+            var name = $("#eventName").val();
+            sessionStorage.eventName = name;
+            $("#header").html("Event details for " + name);
+            //var date = $("#eventDate").val();
+            var date = $("#dateSelect").val() + " " + $("#dateSelect2").val();
+            var numShooters = $("#numShooters").val();
+            var overcapacity = $("#overcapacity").val();
+            var notes = $("#notes").val();
+            var obj = {"name":name,"date":date,"numShooters":numShooters,"overcapacity":overcapacity,"notes":notes};
+            $.extend(obj,dirs);
+            $.post("saveEventData.php",obj,dispSaveEvent);            
+        }
+        
+        function dispSaveEvent(data,textStatus) {
+            data = parseData(data,divideRegEx,DIVIDER,0);
+            dirs.eventDir = shootEvent.name;
+            sessionStorage.dirs = JSON.stringify(dirs);
+            $.post("getEventData.php",dirs,dispEventData);
+            $("#saveStatus").html(data);
+            setTimeout(function() {$("#saveStatus").html("");},500);
+        }
+        
+        function genScorecard() {
+            dirs.eventDir = shootEvent.name;
+            sessionStorage.dirs = JSON.stringify(dirs);
+            sessionStorage.callingPage = "EventForm.html";
+            window.location.href = "Scorecard.html";
+        }
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <h1 id="header">Event Properties</h1>
+    <div id="main">
+        <input type="button" id="Back" class="button" value="Back" onclick="BackButton();"/>
+        <div class="EventSummary">
+            <form id="EventProperties" class="EventProperties">
+                <fieldset>
+                    <label>Event Name</label>
+                    <input type="text" id="eventName"/>
+                    <label>Date</label>
+                    <!--<input type="text" id="eventDate"/>-->
+                    <select id="dateSelect">
+                        <option val="Thursday">Thursday</option>
+                        <option val="Friday">Friday</option>
+                        <option val="Saturday">Saturday</option>
+                        <option val="Sunday">Sunday</option>
+                        <option val="Monday">Monday</option>
+                        <option val="Tuesday">Tuesday</option>
+                        <option val="Wednesday">Wednesday</option>
+                    </select>
+                    <select id="dateSelect2">
+                        <option val="AM">AM</option>
+                        <option val="PM">PM</option>
+                    </select>
+                    <label>Number of shooters</label>
+                    <input type="text" id="numShooters"/>
+                    <label>Overcapacity (%)</label>
+                    <input type="text" id="overcapacity"/>
+                    <label>Notes</label>
+                    <textarea id="notes" rows="4" cols="50"></textarea>
+                    <div id="divSave">
+                        <input type="button" id="saveEvent" value="Save Event Data" onclick="SaveEventData();"/>
+                        <div id="saveStatus"></div>
+                    </div>               
+                </fieldset>
+            </form>
+            <div id="EventSummary" class="EventProperties">
+            </div>
+        </div>
+        <div id="Buttons">
+            <input type="button" id="editStations" value="Edit Stations" onclick="editStations();"/>
+            <input type="button" id="editMachines" value="Edit Machine Database" onclick="editMachines();"/>
+            <input type="button" id="genStationChecklist" value="Generate Station Checklist" onclick="genStnChecklist();"/>
+            <input type="button" id="genScorecard" value="Generate Scorecard" onclick="genScorecard();"/>
+            <!--<input type="button" id="genMachineChecklist" value="Generate Machine Checklist" onclick="genMachineChecklist();"/>-->
+        </div>
+    </div>
+    
+
+    
+    <div id="stationList">
+        
+    </div>
+    
+    
+    
+</body>
+
+
+
+</html>

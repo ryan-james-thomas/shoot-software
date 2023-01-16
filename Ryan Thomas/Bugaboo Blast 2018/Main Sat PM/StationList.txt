@@ -1,0 +1,640 @@
+name: 1 {
+	inUse: no
+	machines: MX-4, GOL-1
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 2 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 3 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 4 {
+	inUse: yes
+	machines: DR-2
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 5 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 6 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 7 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 8 {
+	inUse: no
+	machines: MX-4, R6-4
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R3
+	checkFP: no
+	notes: 
+}
+name: 9 {
+	inUse: yes
+	machines: MX-4, TAF-10
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 10 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 11 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 12 {
+	inUse: yes
+	machines: TAF-2, CR-3
+	colours: all pink, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 13 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 14 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 15 {
+	inUse: yes
+	machines: TL
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP1
+	checkFP: no
+	notes: 
+}
+name: 16 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 17 {
+	inUse: yes
+	machines: TAF-5, MX-1
+	colours: all pink, all pink
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 18 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 19 {
+	inUse: no
+	machines: GR-1
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: FP
+	checkFP: yes
+	notes: 
+}
+name: 20 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 21 {
+	inUse: yes
+	machines: MX-2, TAF-6
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 22 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 23 {
+	inUse: no
+	machines: LN-4m, LN-4M
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: Need trapper
+}
+name: 24 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 25 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 26 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 27 {
+	inUse: yes
+	machines: MX-5, SR
+	colours: all pink, orange top
+	numShots: 3
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 28 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 29 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 30 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 31 {
+	inUse: yes
+	machines: TAF-7, R6-2
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 32 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 33 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 34 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 35 {
+	inUse: yes
+	machines: LN-2
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 36 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 37 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 38 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 39 {
+	inUse: yes
+	machines: MAT-2, TAF-3
+	colours: all pink, orange top
+	numShots: 3
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 40 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 41 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 42 {
+	inUse: yes
+	machines: TAF-4, TAF-1
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 43 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 44 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 45 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 46 {
+	inUse: yes
+	machines: CR-1, R6-m
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 47 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 48 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 49 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 50 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 51 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 52 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 53 {
+	inUse: yes
+	machines: DR-1
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 54 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 55 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 56 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 57 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 58 {
+	inUse: yes
+	machines: R6-3, CR-2
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}
+name: 59 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 60 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 61 {
+	inUse: yes
+	machines: AS-1, AS-2
+	colours: orange top, orange top
+	numShots: 3
+	targetStyle: doubles
+	targetFormat: 1R2
+	checkFP: no
+	notes: 
+}
+name: 62 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 63 {
+	inUse: no
+	machines: 
+	colours: 
+	numShots: 0
+	targetStyle: error
+	targetFormat: 
+	checkFP: no
+	notes: 
+}
+name: 64 {
+	inUse: yes
+	machines: PAT
+	colours: orange top
+	numShots: 3
+	targetStyle: doubles
+	targetFormat: TP
+	checkFP: no
+	notes: 
+}

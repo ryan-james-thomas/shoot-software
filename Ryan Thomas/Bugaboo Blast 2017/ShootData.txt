@@ -1,0 +1,4 @@
+name: Bugaboo Blast 2017
+startDate: 2017-09-21
+endDate: 2017-09-24
+notes: 

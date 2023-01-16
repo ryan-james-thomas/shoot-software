@@ -1,0 +1,139 @@
+body {
+    background-color: #CC5555;
+}
+
+/*fieldset {
+    background-color: #AAAAFF;
+    width: 40%;
+    margin-left: 30%;
+}*/
+
+
+input {
+    /*float: left;*/
+    margin-bottom: 1em;
+    /*margin-top: 1em;*/
+    clear: both;
+}
+
+input[type=button] {
+    margin-top: 1em;
+}
+
+#floatHeader .Buttons {
+    float: none;
+    clear: none;
+    margin: 0em;
+}
+
+#options {
+    /*margin-top: 2em;*/
+    /*background-color: #CC5555;*/
+    float: left;
+    width: 100%;
+    clear: both;
+    /*margin: auto;*/
+}
+
+#content {
+    margin-top: 100px;
+}
+
+#headerMachineInfo {
+    margin: 0em;
+}
+
+#floatHeader {
+    background-color: #AAAAFF;
+    position: fixed;
+    margin: 30%;
+    width: 40%;
+    /*height: 100px;*/
+    margin-top: -100px;
+    border: 1px solid black;
+    border-top: none;
+    text-align: center;
+}
+
+#options {
+    /*margin-top: 2em;*/
+    /*background-color: #CC5555;*/
+    float: left;
+    width: 70%;
+    margin-left: 15%;
+    clear: both;
+    /*margin: auto;*/
+}
+
+.Buttons {
+    float: left;
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    float: left;
+/*    width: 300px;
+    height: 300px;*/
+}
+
+.button {
+    float: left;
+    clear: both;
+    margin-top: 2em;
+}
+
+#machineList {
+    /*margin-top: 2em;*/
+    background-color: #CC5555;
+    float: left;
+    width: 60%;
+    clear: both;
+    /*margin: auto;*/
+}
+
+#stationList {
+    /*margin-top: 2em;*/
+    background-color: #CC5555;
+    float: left;
+    width: 60%;
+    clear: both;
+    /*margin: auto;*/
+}
+
+.MachineSelector {
+    float: left;
+    /*clear: left;*/
+}
+
+.StationText {
+    width: 3em;
+}
+
+.FinalButtons {
+    float: left;
+    clear: both;
+}
+
+.MachineInfo {
+    float: left;
+}
+
+.MachineDisp {
+    float: left;
+    margin-right: 4em;
+}
+
+.clr1 {
+    border: 2px solid black;
+    background-color: #FF5555;
+}
+
+.clr2 {
+    border: 2px solid black;
+    background-color: #5555FF;
+}
+

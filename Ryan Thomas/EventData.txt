@@ -1,0 +1,5 @@
+name: Ryan's Event
+date: Sat AM
+numShooters: 25
+overcapacity: 25%
+notes: 

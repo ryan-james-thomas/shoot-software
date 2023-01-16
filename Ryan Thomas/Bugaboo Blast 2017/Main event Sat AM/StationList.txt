@@ -1,0 +1,117 @@
+name: 1 {
+	inUse: yes
+	machines: R6-2, CR-1
+	colours: all black, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	notes: 
+}
+name: 2 {
+	inUse: yes
+	machines: MX-1, GOL-1
+	colours: all pink, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}
+name: 3 {
+	inUse: yes
+	machines: MX-2, MX-4
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}
+name: 3A {
+	inUse: yes
+	machines: R6-1, TAF-10
+	colours: all black, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 2R1
+	notes: 
+}
+name: 7 {
+	inUse: yes
+	machines: DR-1
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}
+name: 20 {
+	inUse: yes
+	machines: MAT-2, CR-2
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	notes: 
+}
+name: 32 {
+	inUse: yes
+	machines: R6-M, R6-m
+	colours: orange top, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	notes: 
+}
+name: 35 {
+	inUse: yes
+	machines: LN-1
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}
+name: 42 {
+	inUse: yes
+	machines: TL
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}
+name: 53 {
+	inUse: yes
+	machines: TAF-1, R6-3
+	colours: all black, all pink
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	notes: 
+}
+name: 58 {
+	inUse: yes
+	machines: AS-1, R6-4
+	colours: all black, orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: 1R2
+	notes: 
+}
+name: 61 {
+	inUse: yes
+	machines: SR
+	colours: orange top
+	numShots: 4
+	targetStyle: singles
+	targetFormat: S
+	notes: 
+}
+name: 64 {
+	inUse: yes
+	machines: PAT
+	colours: orange top
+	numShots: 4
+	targetStyle: doubles
+	targetFormat: TP
+	notes: 
+}

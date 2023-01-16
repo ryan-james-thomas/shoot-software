@@ -1,0 +1,70 @@
+name: 1 {
+	inUse: yes
+	machines: R6-2, CR-1
+	numShots: 4
+	targetStyle: doubles
+	notes: 
+}
+name: 2 {
+	inUse: yes
+	machines: MX-1, GOL-1
+	numShots: 4
+	targetStyle: doubles
+	notes: Hello
+}
+name: 3 {
+	inUse: yes
+	machines: MX-2, MX-4
+	numShots: 4
+	targetStyle: doubles
+	notes: Hello
+}
+name: 3A {
+	inUse: yes
+	machines: R6-1, TAF-10
+	numShots: 4
+	targetStyle: doubles
+	notes: Hello
+}
+name: 7 {
+	inUse: yes
+	machines: DR-1
+	numShots: 3
+	targetStyle: doubles
+	notes: 
+}
+name: 20 {
+	inUse: yes
+	machines: MAT-2, CR-2
+	numShots: 4
+	targetStyle: doubles
+	notes: 
+}
+name: 32 {
+	inUse: yes
+	machines: R6-M, R6-m
+	numShots: 4
+	targetStyle: doubles
+	notes: 
+}
+name: 42 {
+	inUse: yes
+	machines: TL
+	numShots: 4
+	targetStyle: doubles
+	notes: Hello
+}
+name: 53 {
+	inUse: yes
+	machines: TAF-1, R6-3
+	numShots: 3
+	targetStyle: doubles
+	notes: 
+}
+name: 64 {
+	inUse: yes
+	machines: PAT
+	numShots: 4
+	targetStyle: doubles
+	notes: 
+}

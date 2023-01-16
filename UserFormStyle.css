@@ -1,0 +1,182 @@
+body {
+    background-color: #CC5555;
+}
+
+
+#main {
+    float: left;
+    clear: left;
+    width: 60%;
+    margin-left: 20%;
+}
+
+form {
+    float: left;
+    clear: left;
+    /*width: 100%;*/
+    /*margin-left: 25%;*/
+    /*background-color: #5555CC;*/
+}
+
+fieldset {
+    border: none;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+th {
+    border: 2px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.ShootSummary {
+    float: left;
+    clear: both;
+    width: 100%;
+    background-color: #5555CC;
+    border: 3px black solid;
+    margin-top: 0.5em;
+}
+
+.ShootProperties {
+    float: left;
+    width: 50%;
+}
+
+
+input[type=text]{
+    float: left;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    /*clear: right;*/
+}
+
+input[type=date]{
+    float: left;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    /*clear: right;*/
+}
+
+input[type=checkbox] {
+    float: left;
+    margin: 1em;
+}
+
+#saveShoot {
+    float: left;
+    /*clear: both;*/
+}
+
+#divSave {
+    float: left;
+    clear: both;
+}
+
+#saveStatus {
+    margin-top: 1em;
+    float: left;
+    margin-left: 1em;
+}
+
+textarea {
+    float: left;
+    width: 50%;
+    /*clear: both;*/
+}
+
+label {
+    float: left;
+    clear: left;
+    margin-right: 1em;
+}
+
+.ShootContainer label {    
+    margin: 1em;
+    margin-right: 0.5em;
+    clear: none;
+}
+
+.ShootContainer input[type=text] {    
+    margin: 1em;
+    margin-right: 0.5em;
+    clear: none;
+}
+
+.ShootContainer .button {
+    float: right;
+}
+
+input[type=button] {
+    margin-top: 1em;
+}
+
+
+.button {
+    float: left;
+    /*clear: both;*/
+    margin-right: 2em;
+}
+
+h1 {
+    text-align: center;
+}
+
+#Buttons {
+    /*width: 50%;*/
+    /*margin-left: 25%;*/
+    float: left;
+    clear: both;
+    width: 60%;
+    margin-left: 20%;
+}
+
+#shootList {
+    float: left;
+    clear: both;
+    margin-left: 20%;
+    margin-top: 2em;
+    width: 60%;
+}
+
+#targetList {
+    float: left;
+    clear: both;
+    margin-left: 20%;
+    margin-top: 2em;
+    width: 60%;
+}
+
+.clr1 {
+    border: 2px solid black;
+    background-color: #FF5555;
+}
+
+.clr2 {
+    border: 2px solid black;
+    background-color: #5555FF;
+}
+
+.ShootContainer {
+
+    float: left;
+    width: 100%;
+    clear: both;
+    border: 2px solid black;
+    margin-bottom: 0.5em;
+    
+}
+
+.FinalButtons {
+    float: left;
+    clear: both;
+    margin: 0.5em;
+}
+

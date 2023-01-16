@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">
+        User Form
+    </title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="UserFormStyle.css"/>
+    <script type="text/javascript"
+            src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="ClientFunctions.js"></script>
+  
+    <script type="text/javascript">
+        $(init);    //Run initialization function
+        var idx;
+        var dirs;
+        var callingPage;
+        var shoots;
+        
+        function parseData(data,r,d,opt=0) {
+            var s1 = data.match(r);
+            if (s1!==null) {
+                s1 = s1[0];
+                var s1a = s1.substring(0,s1.length-d.length);
+                data = data.substring(s1.length);
+                if (opt===0) {
+                    shoots = JSON.parse(s1a);
+                } else if (opt===2) {
+                    data = s1a;
+                }
+            }           
+            return data;           
+        }
+        
+        function init() {
+            //if (sessionStorage.dirs) {
+            //    dirs = JSON.parse(sessionStorage.dirs);
+            //} else {
+            //    dirs = new DirList();
+            //    dirs.userDir = "Ryan Thomas";
+            //    dirs.shootDir = "";
+            //    dirs.eventDir = "";
+            //    sessionStorage.dirs = JSON.stringify(dirs);
+            //}
+            dirs = new DirList();
+            dirs.userDir = "Ryan Thomas";
+            dirs.shootDir = "";
+            dirs.eventDir = "";
+            sessionStorage.dirs = JSON.stringify(dirs);
+            
+            $("#header").html("Welcome, " + dirs.userDir);
+            callingPage = "UserForm.html"
+            sessionStorage.callingPage = callingPage;
+            
+            idx=-1;
+            $.post("getShoots.php",dirs,dispShootData);
+            
+        }
+        
+        function dispShootData(data,textStatus) {
+            data = parseData(data,divideRegEx,DIVIDER,0);
+            
+            if (idx == -1) {
+                $("#shootList").html(data);
+            } else {
+                $("#shootList").html($("#shootList").html() + data);
+            }
+        }
+        
+        function editShoot(id) {
+            dirs.shootDir = shoots[id];
+            sessionStorage.dirs = JSON.stringify(dirs);
+            sessionStorage.callingPage = "UserForm.html";
+            window.location.href = "ShootForm.html";
+        }
+        
+        function newShoot(id=null) {
+            idx = shoots.length;
+            var name;
+            var obj;
+            if (id!==null) {
+                name = shoots[id];
+                obj = {"idx":idx,"name":name,"copyIdx":id};
+            } else {         
+                obj = {"idx":idx};
+            }
+            $.extend(obj,dirs);
+            $.post("shootForm.php",obj,dispShootData);
+        }
+        
+        
+        function cancelShoot(id) {
+            $("#shoot_" + id).remove();
+        }
+        
+        function makeShoot(id,copyId) {
+            var name = document.getElementById("shootName_" + id).value;
+            if (checkNames(name,id,shoots)===false) {
+                document.getElementById("shootName_" + id).style.backgroundColor = "red";
+                document.getElementById("name_chk_" + id).style.display = "inline";
+                return -1;
+            }
+            idx=id;
+            var obj;
+            if (copyId>=0) {
+                obj = {"name":name,"copyName":shoots[copyId]};
+            } else {
+                obj = {"name":name};
+            }
+            $.extend(obj,dirs);
+            $.post("makeShoot.php",obj,
+                   function(data,textStatus) {
+                    if (data!=="") {
+                        $("#name_chk_" + idx).html("Error creating new event");
+                        return -1;
+                    }
+                    idx = -1;
+                    $.post("getShoots.php",dirs,dispShootData);
+                    }
+                    );
+            
+        }
+        
+        function deleteShoot(id) {
+            var name = shoots[id];
+            if (confirm("Are you sure you want to delete " + name + "?")){  //Dialog box for confirming delete
+                idx=-1; //Recreate entire list
+                dirs.shootDir = name;
+
+                $.post("deleteShoot.php",dirs,function(data,textStatus){$.post("getShoots.php",dirs,dispShootData);});
+            }
+        }
+        
+        
+        
+        
+    </script>
+</head>
+
+
+<body>
+    <h1 id="header"></h1>
+    <div id="Buttons">
+        <input type="button" id="newShoot" value="New Shoot" onclick="newShoot();"/>
+    </div>
+    <div id="shootList">
+       
+    </div>
+    
+    
+    
+</body>
+
+
+
+</html>
